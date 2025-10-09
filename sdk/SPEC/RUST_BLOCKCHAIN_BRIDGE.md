@@ -1,0 +1,1 @@
+# Rust/Blockchain Bridge\n\n## Objetivo\nPonte para contratos inteligentes (ESG, GST).\n\n## Stack\n- Rust + Anchor (Solana) / ethers-rs (EVM)\n\n## Componentes\n- signer, tx_builder, contract_client, verifiers\n\n## Segurança\n- audit, rate limit, keys, reentrancy protections\n\n## Integração\n- FastAPI bindings\n- CLI utilitária
