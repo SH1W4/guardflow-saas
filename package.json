@@ -1,0 +1,132 @@
+{
+  "name": "guardflow-saas",
+  "version": "1.0.0",
+  "description": "GuardFlow SaaS - Plataforma de IA para Mercados",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:mobile\"",
+    "dev:backend": "cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:mobile": "cd mobile && npm run start",
+    "build": "npm run build:backend && npm run build:frontend && npm run build:mobile",
+    "build:backend": "cd backend && python -m pip install -r requirements.txt",
+    "build:frontend": "cd frontend && npm run build",
+    "build:mobile": "cd mobile && npm run build",
+    "test": "npm run test:backend && npm run test:frontend && npm run test:mobile",
+    "test:backend": "cd backend && python -m pytest",
+    "test:frontend": "cd frontend && npm test",
+    "test:mobile": "cd mobile && npm test",
+    "test:integration": "cd backend && python -m pytest tests/integration/",
+    "test:e2e": "cd frontend && npm run test:e2e",
+    "test:load": "cd backend && python -m pytest tests/load/",
+    "test:stress": "cd backend && python -m pytest tests/stress/",
+    "migrate": "cd backend && python -m alembic upgrade head",
+    "seed": "cd backend && python -m scripts.seed_database",
+    "lint": "npm run lint:backend && npm run lint:frontend && npm run lint:mobile",
+    "lint:backend": "cd backend && python -m flake8 . && python -m black . && python -m isort .",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:mobile": "cd mobile && npm run lint",
+    "format": "npm run format:backend && npm run format:frontend && npm run format:mobile",
+    "format:backend": "cd backend && python -m black . && python -m isort .",
+    "format:frontend": "cd frontend && npm run format",
+    "format:mobile": "cd mobile && npm run format",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "deploy:staging": "npm run build && npm run migrate && npm run seed",
+    "deploy:production": "npm run build && npm run migrate && npm run seed",
+    "docs": "cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+    "docs:generate": "cd backend && python -m scripts.generate_docs",
+    "security:scan": "cd backend && python -m safety check && cd frontend && npm audit",
+    "security:fix": "cd backend && python -m safety check --update && cd frontend && npm audit fix",
+    "performance:test": "cd backend && python -m pytest tests/performance/",
+    "coverage": "npm run coverage:backend && npm run coverage:frontend && npm run coverage:mobile",
+    "coverage:backend": "cd backend && python -m pytest --cov=app --cov-report=html",
+    "coverage:frontend": "cd frontend && npm run test:coverage",
+    "coverage:mobile": "cd mobile && npm run test:coverage",
+    "clean": "npm run clean:backend && npm run clean:frontend && npm run clean:mobile",
+    "clean:backend": "cd backend && find . -type d -name __pycache__ -exec rm -rf {} + && find . -type f -name *.pyc -delete",
+    "clean:frontend": "cd frontend && rm -rf node_modules dist .next",
+    "clean:mobile": "cd mobile && rm -rf node_modules android/app/build ios/build",
+    "install": "npm run install:backend && npm run install:frontend && npm run install:mobile",
+    "install:backend": "cd backend && python -m pip install -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "install:mobile": "cd mobile && npm install",
+    "setup": "npm run install && npm run migrate && npm run seed",
+    "reset": "npm run clean && npm run install && npm run migrate && npm run seed"
+  },
+  "keywords": [
+    "saas",
+    "ai",
+    "blockchain",
+    "esg",
+    "tokens",
+    "nft",
+    "marketplace",
+    "sustainability",
+    "retail",
+    "supermarket",
+    "checkout",
+    "payments",
+    "computer-vision",
+    "machine-learning",
+    "react",
+    "react-native",
+    "fastapi",
+    "python",
+    "typescript",
+    "docker",
+    "microservices"
+  ],
+  "author": "GuardFlow Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guardflow/guardflow-saas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guardflow/guardflow-saas/issues"
+  },
+  "homepage": "https://guardflow.com",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0",
+    "python": ">=3.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "eslint": "^8.50.0",
+    "typescript": "^5.2.0",
+    "@types/node": "^20.6.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "cypress": "^13.3.0",
+    "playwright": "^1.38.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "workspaces": [
+    "frontend",
+    "mobile"
+  ],
+  "private": true
+}
