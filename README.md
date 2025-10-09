@@ -1,8 +1,23 @@
 # 🚀 GuardFlow SaaS - Plataforma de IA para Mercados
 
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://reactjs.org)
+[![Docker](https://img.shields.io/badge/Docker-20+-2496ed.svg)](https://docker.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 ## 📋 **VISÃO GERAL**
 
 **GuardFlow SaaS** é uma plataforma de inteligência artificial que se integra com ERPs existentes de supermercados, adicionando camadas de IA, segurança GuardPass e ecossistema GST para transformar mercados em ecossistemas sustentáveis tokenizados.
+
+### 🏷️ **Linguagens e Tecnologias**
+- **Backend**: Python 3.11+, FastAPI, SQLAlchemy, Celery
+- **Frontend**: React 18+, TypeScript, Material-UI, Redux Toolkit
+- **Mobile**: React Native, Expo, Web3.js
+- **AI/ML**: TensorFlow, PyTorch, OpenCV, Transformers
+- **Blockchain**: Solidity, Web3.py, Ethers.js
+- **Database**: PostgreSQL, Redis, MongoDB
+- **DevOps**: Docker, Kubernetes, Nginx, Prometheus
 
 ## 🎯 **PROPOSTA DE VALOR**
 
