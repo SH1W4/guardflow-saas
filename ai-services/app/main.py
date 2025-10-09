@@ -19,7 +19,8 @@ from app.api.v1 import (
     nlp,
     recommendations,
     optimization,
-    health
+    health,
+    ai_inference
 )
 from app.core.middleware import (
     RateLimitMiddleware,
@@ -95,6 +96,7 @@ app.include_router(analytics.router, prefix="/ai/v1/analytics", tags=["Analytics
 app.include_router(nlp.router, prefix="/ai/v1/nlp", tags=["Natural Language Processing"])
 app.include_router(recommendations.router, prefix="/ai/v1/recommendations", tags=["Recommendations"])
 app.include_router(optimization.router, prefix="/ai/v1/optimization", tags=["Optimization"])
+app.include_router(ai_inference.router, prefix="/ai/v1/inference", tags=["AI Inference"])
 
 # Exception handlers
 @app.exception_handler(AIException)
