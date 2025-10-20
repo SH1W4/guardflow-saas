@@ -1,0 +1,148 @@
+# 🔗 CONFIGURAÇÃO DE INTEGRAÇÃO GUARDFLOW ↔ ECOSYSTEM-DEGOV
+
+# Configurações de Integração
+integration:
+  # URLs dos serviços
+  guardflow:
+    api_url: "http://localhost:8000"
+    api_key: "${GUARDFLOW_API_KEY}"
+    timeout: 30
+    retry_attempts: 3
+    
+  ecosystem_degov:
+    api_url: "http://localhost:8080"
+    api_key: "${ECOSYSTEM_DEGOV_API_KEY}"
+    timeout: 30
+    retry_attempts: 3
+
+# Message Queue (Redis)
+message_queue:
+  redis:
+    url: "redis://localhost:6379"
+    db: 1
+    timeout: 5
+    max_connections: 10
+    
+  rabbitmq:
+    url: "amqp://localhost:5672"
+    exchange: "esg_integration"
+    routing_key: "esg.data"
+
+# Database Sync
+database_sync:
+  enabled: true
+  interval: "5m"
+  batch_size: 100
+  tables:
+    - "esg_integration_logs"
+    - "token_transactions"
+    - "nfe_esg_scores"
+
+# Blockchain Integration
+blockchain:
+  ethereum:
+    rpc_url: "${ETHEREUM_RPC_URL}"
+    private_key: "${PRIVATE_KEY}"
+    gas_limit: 200000
+    gas_price: "20 gwei"
+    
+  contracts:
+    gst_token: "${GST_TOKEN_CONTRACT}"
+    ect_token: "${ECT_TOKEN_CONTRACT}"
+    aet_token: "${AET_TOKEN_CONTRACT}"
+
+# Trinity AI Agent
+trinity_ai:
+  enabled: true
+  model_path: "/models/trinity_ai"
+  processing_timeout: 60
+  max_concurrent_requests: 10
+  
+  features:
+    - "esg_score_optimization"
+    - "token_allocation_optimization"
+    - "market_analysis"
+    - "risk_assessment"
+
+# Monitoring
+monitoring:
+  metrics:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+  logging:
+    level: "INFO"
+    format: "json"
+    output: "stdout"
+    
+  alerts:
+    enabled: true
+    webhook_url: "${ALERT_WEBHOOK_URL}"
+    channels:
+      - "slack"
+      - "email"
+
+# Security
+security:
+  authentication:
+    method: "api_key"
+    rotation_interval: "30d"
+    
+  encryption:
+    algorithm: "AES-256-GCM"
+    key: "${ENCRYPTION_KEY}"
+    
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 100
+    burst_size: 20
+
+# Performance
+performance:
+  caching:
+    enabled: true
+    ttl: "1h"
+    max_size: "100MB"
+    
+  connection_pooling:
+    max_connections: 20
+    min_connections: 5
+    idle_timeout: "5m"
+    
+  compression:
+    enabled: true
+    algorithm: "gzip"
+    threshold: "1KB"
+
+# Compliance
+compliance:
+  lgpd:
+    enabled: true
+    data_retention: "7y"
+    anonymization: true
+    
+  sefaz:
+    enabled: true
+    nfe_validation: true
+    audit_logging: true
+    
+  blockchain:
+    enabled: true
+    transaction_logging: true
+    immutable_records: true
+
+# Development
+development:
+  debug: true
+  hot_reload: true
+  test_mode: false
+  
+  mock_services:
+    blockchain: false
+    trinity_ai: false
+    
+  test_data:
+    enabled: true
+    nfe_samples: 10
+    esg_scores: 100

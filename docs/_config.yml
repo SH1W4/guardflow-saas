@@ -1,0 +1,67 @@
+# GitHub Pages Configuration for GuardFlow SaaS
+
+# Site settings
+title: "GuardFlow SaaS - Checkout Inteligente com IA Ética"
+description: "A primeira plataforma SaaS de checkout inteligente com IA ética do Brasil. Transforme seu checkout em vantagem competitiva."
+url: "https://sh1w4.github.io"
+baseurl: "/guardflow-saas"
+
+# Author
+author:
+  name: "GuardFlow Team"
+  email: "contact@guardflow.com"
+
+# SEO
+lang: pt-BR
+timezone: America/Sao_Paulo
+
+# Social
+social:
+  github: "SH1W4/guardflow-saas"
+  linkedin: "guardflow"
+  twitter: "guardflow"
+
+# GitHub Pages
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Exclude files
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .git
+  - .gitignore
+
+# Include files
+include:
+  - _pages
+  - assets
+
+# Markdown
+markdown: kramdown
+highlighter: rouge
+
+# Sass
+sass:
+  style: compressed
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

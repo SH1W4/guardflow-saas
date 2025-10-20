@@ -1,0 +1,12 @@
+{
+  "processed_at": "2025-10-10T22:54:49.568460",
+  "section": "ESG_CONFIGURATION",
+  "file_type": "configuration",
+  "esg_config_found": true,
+  "config_keys": [
+    "processed_at",
+    "section",
+    "file_type",
+    "esg_keywords_found"
+  ]
+}

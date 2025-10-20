@@ -1,0 +1,152 @@
+# 🔗 DOCKER COMPOSE PARA INTEGRAÇÃO GUARDFLOW ↔ ECOSYSTEM-DEGOV
+
+version: '3.8'
+
+services:
+  # GuardFlow Backend
+  guardflow:
+    build: 
+      context: ../../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://guardflow:guardflow@postgres:5432/guardflow
+      - REDIS_URL=redis://redis:6379/1
+      - ECOSYSTEM_DEGOV_API_URL=http://ecosystem-degov:8080
+      - ECOSYSTEM_DEGOV_API_KEY=sk_guardflow_1234567890abcdef
+      - INTEGRATION_ENABLED=true
+      - INTEGRATION_TIMEOUT=30
+      - INTEGRATION_RETRY_ATTEMPTS=3
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - integration-network
+
+  # Ecosystem-Degov Backend
+  ecosystem-degov:
+    build:
+      context: ../../ecosystem-degov
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - GUARDFLOW_API_URL=http://guardflow:8000
+      - GUARDFLOW_API_KEY=sk_ecosystem_degov_1234567890abcdef
+      - REDIS_URL=redis://redis:6379/2
+      - ETHEREUM_RPC_URL=https://goerli.infura.io/v3/your_project_id
+      - PRIVATE_KEY=your_private_key_here
+      - TRINITY_AI_ENABLED=true
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./ecosystem-logs:/app/logs
+    networks:
+      - integration-network
+
+  # Database
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=guardflow
+      - POSTGRES_USER=guardflow
+      - POSTGRES_PASSWORD=guardflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - integration-network
+
+  # Redis (Message Queue)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - integration-network
+
+  # Prometheus (Monitoring)
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - integration-network
+
+  # Grafana (Dashboards)
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=guardflow
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - integration-network
+
+  # Nginx (Load Balancer)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - guardflow
+      - ecosystem-degov
+    networks:
+      - integration-network
+
+  # Integration Monitor
+  integration-monitor:
+    build:
+      context: ./monitor
+      dockerfile: Dockerfile
+    environment:
+      - GUARDFLOW_URL=http://guardflow:8000
+      - ECOSYSTEM_DEGOV_URL=http://ecosystem-degov:8080
+      - REDIS_URL=redis://redis:6379/3
+      - PROMETHEUS_URL=http://prometheus:9090
+    depends_on:
+      - guardflow
+      - ecosystem-degov
+      - redis
+      - prometheus
+    networks:
+      - integration-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  integration-network:
+    driver: bridge
