@@ -624,3 +624,4 @@ class ERPConnectorFactory:
         
         connector_class = connectors[erp_type.lower()]
         return connector_class(config)
+

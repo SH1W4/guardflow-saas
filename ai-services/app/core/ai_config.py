@@ -249,3 +249,4 @@ def get_validation_config() -> Dict[str, Any]:
 def get_deploy_config() -> Dict[str, Any]:
     """Obter configuração de deploy"""
     return ai_config.DEPLOY_CONFIG
+

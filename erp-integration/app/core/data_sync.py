@@ -385,3 +385,4 @@ class SyncScheduler:
             logger.info(f"Job agendado removido: {job_id}")
             return True
         return False
+

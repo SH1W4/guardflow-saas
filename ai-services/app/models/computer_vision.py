@@ -418,3 +418,4 @@ class ComputerVisionService:
                     'sustainability_indicators_count': 0
                 }
             }
+

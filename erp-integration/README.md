@@ -375,3 +375,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 **Versão**: 1.0.0  
 **Status**: 🚧 **EM DESENVOLVIMENTO**  
 **Próxima versão**: v1.1.0 (Janeiro 2025)
+

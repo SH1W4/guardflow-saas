@@ -504,3 +504,4 @@ class ModelManager:
         except Exception as e:
             logger.error(f"Erro ao exportar modelo: {e}")
             return False
+

@@ -556,3 +556,4 @@ class TrainingPipeline:
         except Exception as e:
             logger.error(f"Erro no retreinamento automático: {e}")
             return False
+

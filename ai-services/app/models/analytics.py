@@ -449,3 +449,4 @@ class AnalyticsService:
         except Exception as e:
             logger.error(f"Erro na geração de insights: {e}")
             return {'error': str(e)}
+

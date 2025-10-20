@@ -421,3 +421,4 @@ class NLPService:
                 'keywords': [],
                 'summary': {'text': feedback[:100] + '...', 'compression_ratio': 0.5}
             }
+

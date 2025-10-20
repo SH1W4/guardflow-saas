@@ -470,3 +470,4 @@ async def health_check():
     except Exception as e:
         logger.error(f"Erro no health check: {e}")
         raise HTTPException(status_code=500, detail=f"Erro interno: {str(e)}")
+

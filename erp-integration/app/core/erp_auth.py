@@ -612,3 +612,4 @@ class ERPAuthManager:
             del self.active_sessions[session_id]
         
         logger.info(f"Removidas {len(expired_sessions)} sessões expiradas")
+

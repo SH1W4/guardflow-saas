@@ -449,3 +449,4 @@ class DataTransformer:
             "waste_kg": carbon_footprint * 0.1,  # Estimativa
             "renewable_energy": item.get("sustainable", False)
         }
+
