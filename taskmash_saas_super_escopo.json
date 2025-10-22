@@ -1,0 +1,677 @@
+{
+  "taskmash_version": "2.0",
+  "project_name": "GuardFlow SaaS Super Escopo",
+  "description": "Completar o GuardFlow SaaS para produção - 12 semanas de desenvolvimento",
+  "status": "ready_to_execute",
+  "created_date": "2025-10-22",
+  "estimated_duration": "12 weeks",
+  "estimated_cost": "R$ 300K",
+  "current_completion": "60%",
+  "target_completion": "100%",
+  
+  "phases": [
+    {
+      "phase_id": "phase_1",
+      "name": "Backend APIs",
+      "duration": "3 weeks",
+      "priority": "HIGH",
+      "status": "pending",
+      "tasks": [
+        {
+          "task_id": "1.1.1",
+          "name": "Implementar JWT Authentication",
+          "description": "Criar backend/app/api/v1/auth.py com login/logout, refresh tokens, rate limiting",
+          "estimated_days": 3,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": [],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/auth.py",
+            "JWT token management",
+            "Rate limiting configuration"
+          ]
+        },
+        {
+          "task_id": "1.1.2",
+          "name": "Implementar OAuth2",
+          "description": "Integrar Google OAuth, Microsoft OAuth, implementar scopes",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["1.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "Google OAuth integration",
+            "Microsoft OAuth integration",
+            "OAuth scopes implementation"
+          ]
+        },
+        {
+          "task_id": "1.2.1",
+          "name": "API de Usuários",
+          "description": "Criar backend/app/api/v1/users.py com CRUD completo, perfis e permissões",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/users.py",
+            "User CRUD operations",
+            "User profiles and permissions"
+          ]
+        },
+        {
+          "task_id": "1.2.2",
+          "name": "API de Mercados",
+          "description": "Criar backend/app/api/v1/markets.py com gestão de mercados e configurações",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/markets.py",
+            "Market management",
+            "Market configurations"
+          ]
+        },
+        {
+          "task_id": "1.2.3",
+          "name": "API de Produtos",
+          "description": "Criar backend/app/api/v1/products.py com catálogo, busca e filtros",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/products.py",
+            "Product catalog",
+            "Search and filters"
+          ]
+        },
+        {
+          "task_id": "1.3.1",
+          "name": "API de Scanner",
+          "description": "Criar backend/app/api/v1/scanner.py com integração Google Vision e reconhecimento",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.2.3"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/scanner.py",
+            "Google Vision integration",
+            "Product recognition"
+          ]
+        },
+        {
+          "task_id": "1.3.2",
+          "name": "API de Pagamentos",
+          "description": "Criar backend/app/api/v1/payments.py com integração Mercado Pago e Stripe",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.2.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/payments.py",
+            "Mercado Pago integration",
+            "Stripe integration"
+          ]
+        },
+        {
+          "task_id": "1.3.3",
+          "name": "API ESG",
+          "description": "Criar backend/app/api/v1/esg.py com cálculo de scores ESG e relatórios",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["1.2.3"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "backend/app/api/v1/esg.py",
+            "ESG score calculation",
+            "Sustainability reports"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase_2",
+      "name": "Frontend React",
+      "duration": "3 weeks",
+      "priority": "HIGH",
+      "status": "pending",
+      "tasks": [
+        {
+          "task_id": "2.1.1",
+          "name": "Setup React",
+          "description": "Criar frontend/ directory, configurar TypeScript e Material-UI",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.2.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "frontend/ directory structure",
+            "TypeScript configuration",
+            "Material-UI setup"
+          ]
+        },
+        {
+          "task_id": "2.1.2",
+          "name": "Roteamento",
+          "description": "Configurar React Router, criar rotas principais e implementar guards",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.1.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "React Router configuration",
+            "Main routes",
+            "Route guards"
+          ]
+        },
+        {
+          "task_id": "2.1.3",
+          "name": "Estado Global",
+          "description": "Configurar Redux Toolkit, implementar slices e configurar persistência",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.1.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Redux Toolkit setup",
+            "State slices",
+            "Persistence configuration"
+          ]
+        },
+        {
+          "task_id": "2.2.1",
+          "name": "Layout Principal",
+          "description": "Criar frontend/src/components/Layout.tsx com sidebar e header",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.1.3"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Layout component",
+            "Sidebar navigation",
+            "Header with profile"
+          ]
+        },
+        {
+          "task_id": "2.2.2",
+          "name": "Dashboard Home",
+          "description": "Criar frontend/src/pages/Dashboard.tsx com métricas e gráficos",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.2.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Dashboard page",
+            "Main metrics",
+            "Real-time charts"
+          ]
+        },
+        {
+          "task_id": "2.2.3",
+          "name": "Gestão de Mercados",
+          "description": "Criar frontend/src/pages/Markets.tsx com lista e CRUD de mercados",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.2.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Markets page",
+            "Market list",
+            "Market CRUD operations"
+          ]
+        },
+        {
+          "task_id": "2.3.1",
+          "name": "Analytics Dashboard",
+          "description": "Criar frontend/src/pages/Analytics.tsx com gráficos de performance e métricas ESG",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["2.2.2"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Analytics page",
+            "Performance charts",
+            "ESG metrics"
+          ]
+        },
+        {
+          "task_id": "2.3.2",
+          "name": "Configurações",
+          "description": "Criar frontend/src/pages/Settings.tsx com configurações de integração e sistema",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["2.2.1"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Settings page",
+            "Integration settings",
+            "System settings"
+          ]
+        },
+        {
+          "task_id": "2.3.3",
+          "name": "Monitoramento",
+          "description": "Criar frontend/src/pages/Monitoring.tsx com status dos serviços e logs",
+          "estimated_days": 1,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["2.2.2"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Monitoring page",
+            "Service status",
+            "Real-time logs"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase_3",
+      "name": "Mobile App",
+      "duration": "3 weeks",
+      "priority": "HIGH",
+      "status": "pending",
+      "tasks": [
+        {
+          "task_id": "3.1.1",
+          "name": "Setup React Native",
+          "description": "Criar mobile/ directory, configurar Expo e navegação",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["2.1.1"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "mobile/ directory structure",
+            "Expo configuration",
+            "Navigation setup"
+          ]
+        },
+        {
+          "task_id": "3.1.2",
+          "name": "Estado Global Mobile",
+          "description": "Configurar Redux Toolkit, implementar slices mobile e configurar AsyncStorage",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.1.1"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Redux Toolkit mobile setup",
+            "Mobile state slices",
+            "AsyncStorage configuration"
+          ]
+        },
+        {
+          "task_id": "3.1.3",
+          "name": "Navegação Mobile",
+          "description": "Configurar React Navigation, criar tab navigator e implementar stack navigation",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.1.1"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "React Navigation setup",
+            "Tab navigator",
+            "Stack navigation"
+          ]
+        },
+        {
+          "task_id": "3.2.1",
+          "name": "Scanner de Produtos",
+          "description": "Criar mobile/src/screens/ScannerScreen.tsx com integração de câmera e reconhecimento",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.1.3", "1.3.1"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Scanner screen",
+            "Camera integration",
+            "Product recognition"
+          ]
+        },
+        {
+          "task_id": "3.2.2",
+          "name": "Carrinho Digital",
+          "description": "Criar mobile/src/screens/CartScreen.tsx com gestão de itens e cálculo de totais",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.1.3"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Cart screen",
+            "Item management",
+            "Total calculation"
+          ]
+        },
+        {
+          "task_id": "3.2.3",
+          "name": "Integração Scanner-Carrinho",
+          "description": "Sincronização de dados entre scanner e carrinho com validação de produtos",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.2.1", "3.2.2"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Scanner-Cart integration",
+            "Data synchronization",
+            "Product validation"
+          ]
+        },
+        {
+          "task_id": "3.3.1",
+          "name": "Processamento de Pagamentos",
+          "description": "Criar mobile/src/screens/PaymentScreen.tsx com integração PIX e cartão",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["3.2.3", "1.3.2"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Payment screen",
+            "PIX integration",
+            "Card integration"
+          ]
+        },
+        {
+          "task_id": "3.3.2",
+          "name": "Dashboard ESG",
+          "description": "Criar mobile/src/screens/ESGScreen.tsx com scores ESG e relatórios sustentáveis",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["3.1.3", "1.3.3"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "ESG screen",
+            "ESG scores",
+            "Sustainability reports"
+          ]
+        },
+        {
+          "task_id": "3.3.3",
+          "name": "Perfil do Usuário",
+          "description": "Criar mobile/src/screens/ProfileScreen.tsx com configurações pessoais e histórico",
+          "estimated_days": 1,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["3.1.3"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Profile screen",
+            "Personal settings",
+            "Purchase history"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase_4",
+      "name": "Testes e CI/CD",
+      "duration": "2 weeks",
+      "priority": "HIGH",
+      "status": "pending",
+      "tasks": [
+        {
+          "task_id": "4.1.1",
+          "name": "Testes Unitários Backend",
+          "description": "Implementar pytest, testes de APIs e serviços",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["1.3.3"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "pytest configuration",
+            "API tests",
+            "Service tests"
+          ]
+        },
+        {
+          "task_id": "4.1.2",
+          "name": "Testes de Integração",
+          "description": "Testes end-to-end e testes de performance",
+          "estimated_days": 2,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["4.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "End-to-end tests",
+            "Performance tests",
+            "Integration test suite"
+          ]
+        },
+        {
+          "task_id": "4.1.3",
+          "name": "Testes de Segurança",
+          "description": "Testes de autenticação e autorização",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["4.1.1"],
+          "resources": ["Backend Developer"],
+          "deliverables": [
+            "Authentication tests",
+            "Authorization tests",
+            "Security test suite"
+          ]
+        },
+        {
+          "task_id": "4.2.1",
+          "name": "Testes Frontend",
+          "description": "Implementar Jest, testes de componentes e integração",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["2.3.3"],
+          "resources": ["Frontend Developer"],
+          "deliverables": [
+            "Jest configuration",
+            "Component tests",
+            "Integration tests"
+          ]
+        },
+        {
+          "task_id": "4.2.2",
+          "name": "Testes Mobile",
+          "description": "Testes de componentes e navegação mobile",
+          "estimated_days": 2,
+          "priority": "MEDIUM",
+          "status": "pending",
+          "dependencies": ["3.3.3"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Mobile component tests",
+            "Navigation tests",
+            "Mobile test suite"
+          ]
+        },
+        {
+          "task_id": "4.2.3",
+          "name": "CI/CD Pipeline",
+          "description": "Configurar GitHub Actions, pipeline de testes e deploy",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["4.2.2"],
+          "resources": ["DevOps Engineer"],
+          "deliverables": [
+            "GitHub Actions configuration",
+            "Test pipeline",
+            "Deploy pipeline"
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": "phase_5",
+      "name": "Deploy e Produção",
+      "duration": "1 week",
+      "priority": "HIGH",
+      "status": "pending",
+      "tasks": [
+        {
+          "task_id": "5.1.1",
+          "name": "Configurar Infraestrutura",
+          "description": "Configurar Railway/AWS, domínios e SSL",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["4.2.3"],
+          "resources": ["DevOps Engineer"],
+          "deliverables": [
+            "Railway/AWS configuration",
+            "Domain setup",
+            "SSL certificates"
+          ]
+        },
+        {
+          "task_id": "5.1.2",
+          "name": "Deploy Backend",
+          "description": "Deploy APIs, configurar banco de dados e Redis",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["5.1.1"],
+          "resources": ["DevOps Engineer"],
+          "deliverables": [
+            "API deployment",
+            "Database configuration",
+            "Redis configuration"
+          ]
+        },
+        {
+          "task_id": "5.1.3",
+          "name": "Deploy Frontend",
+          "description": "Deploy React app e configurar CDN",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["5.1.2"],
+          "resources": ["DevOps Engineer"],
+          "deliverables": [
+            "React app deployment",
+            "CDN configuration",
+            "Frontend optimization"
+          ]
+        },
+        {
+          "task_id": "5.1.4",
+          "name": "Deploy Mobile",
+          "description": "Publicar no Expo e configurar push notifications",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["5.1.3"],
+          "resources": ["Mobile Developer"],
+          "deliverables": [
+            "Expo publication",
+            "Push notifications",
+            "Mobile app store"
+          ]
+        },
+        {
+          "task_id": "5.1.5",
+          "name": "Monitoramento",
+          "description": "Configurar Prometheus, Grafana e alertas",
+          "estimated_days": 1,
+          "priority": "HIGH",
+          "status": "pending",
+          "dependencies": ["5.1.4"],
+          "resources": ["DevOps Engineer"],
+          "deliverables": [
+            "Prometheus configuration",
+            "Grafana dashboards",
+            "Alert system"
+          ]
+        }
+      ]
+    }
+  ],
+  
+  "resources": {
+    "team": [
+      {
+        "role": "Backend Developer",
+        "allocation": "3 weeks",
+        "skills": ["Python", "FastAPI", "PostgreSQL", "Redis"]
+      },
+      {
+        "role": "Frontend Developer", 
+        "allocation": "3 weeks",
+        "skills": ["React", "TypeScript", "Material-UI", "Redux"]
+      },
+      {
+        "role": "Mobile Developer",
+        "allocation": "3 weeks", 
+        "skills": ["React Native", "Expo", "Navigation", "AsyncStorage"]
+      },
+      {
+        "role": "DevOps Engineer",
+        "allocation": "2 weeks",
+        "skills": ["Docker", "CI/CD", "AWS/Railway", "Monitoring"]
+      }
+    ],
+    "budget": {
+      "development": "R$ 200K",
+      "infrastructure": "R$ 50K", 
+      "testing": "R$ 30K",
+      "deployment": "R$ 20K",
+      "total": "R$ 300K"
+    }
+  },
+  
+  "success_criteria": {
+    "backend": "12 APIs funcionais",
+    "frontend": "Dashboard completo",
+    "mobile": "App funcional",
+    "tests": "90% cobertura",
+    "deploy": "Produção ativa",
+    "monitoring": "Sistema completo"
+  },
+  
+  "risks": [
+    {
+      "risk": "Dependências externas",
+      "mitigation": "Implementar fallbacks e testes de integração"
+    },
+    {
+      "risk": "Performance mobile",
+      "mitigation": "Otimização contínua e testes de carga"
+    },
+    {
+      "risk": "Segurança",
+      "mitigation": "Testes de segurança e auditoria"
+    }
+  ],
+  
+  "next_actions": [
+    "Iniciar Fase 1 - Backend APIs",
+    "Configurar ambiente de desenvolvimento",
+    "Implementar primeira API (auth.py)",
+    "Configurar testes automatizados"
+  ]
+}
